@@ -42,6 +42,10 @@ npm list 或 npm ll 或 npm la 或 npm ls
 ```
 npm uninstall <packageName>
 ```
+- 查看过期包
+```
+npm outdated
+```
 
 - 更新
 更新已经安装的模块(或全局的模块)

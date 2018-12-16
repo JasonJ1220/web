@@ -31,10 +31,16 @@ yarn global add <packageName>
 ```
 yarn list
 yarn info <packageName>
-```
+``` 
+-
+
 - 卸载已经安装的模块
 ```
 yarn remove <packageName>
+```
+- 查看过期包
+```
+yarn outdated
 ```
 
 - 更新
