@@ -160,7 +160,6 @@ console.log(user.getName());//output:name
 ```
 
 ### 函数声明和函数表达式
-
 ```js
 alert(sum(3, 11)); //弹出14
 function sum(x, y) {
@@ -175,8 +174,51 @@ var sum = function (x, y) {
 ```
 
 ### 合并对象
+1. jQuery.extend([deep], target, object1, [objectN])
+```
+var o1 = { a:'a' }, o2 = { b:'b' };
+var o3 = $.extend(o1, o2)  // 合并 o1 和 o2， 将结果返回给 o3. 注意： 此时，o1 == o3! 即 o1 被修改
+var o3 = $.extend({}, o1, o2) // 合并 o1 和 o2， 将结果返回给 o3. 注意： 此时，o1 ！= o3! 即 o1 没有被修改
+```
+2. Object.assign()
+```
+var o1 = { a: 1 };
+var o2 = { b: 2 };
+var o3 = { c: 3 };
+var obj = Object.assign(o1, o2, o3);
+console.log(obj); // { a: 1, b: 2, c: 3 }
+console.log(o1);  // { a: 1, b: 2, c: 3 }, 注意目标对象自身也会改变。
+```
+3. ES5合并对象polyfill
+```
+function es6AssignPolyfill() {
+    if (!Object.assign) {
+        Object.defineProperty(Object, "assign", {
+            enumerable: false,
+            configurable: true,
+            writable: true,
+            value: function (target, firstSource) {
+                "use strict";
+                if (target === undefined || target === null)
+                    throw new TypeError("Cannot convert first argument to object");
+                var to = Object(target);
+                for (var i = 1; i < arguments.length; i++) {
+                    var nextSource = arguments[i];
+                    if (nextSource === undefined || nextSource === null) continue;
+                    var keysArray = Object.keys(Object(nextSource));
+                    for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
+                        var nextKey = keysArray[nextIndex];
+                        var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+                        if (desc !== undefined && desc.enumerable) to[nextKey] = nextSource[nextKey];
+                    }
+                }
+                return to;
+            }
+        });
+    }
+}
+```
 
-###
 
 ## DOM
 ### 浏览器相关
