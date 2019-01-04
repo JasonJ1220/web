@@ -8,11 +8,12 @@ Full Stack Web Development
 
 ## my collection of useful JavaScript snippets
 1. [flow](snippets/flow.md)
-Creates a function that returns the result of invoking the given functions with the this binding of the created function, where each successive invocation is supplied the return value of the previous.
 1. [bifurcate](snippets/bifurcate.md)
-Splits values into two groups. If an element in second array is truthy, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
 1. [chunk](snippets/chunk.md)
-Chunks an array into smaller arrays of a specified size.
+1. [compact](snippets/compact.md)
+1. [intersection](snippets/intersection.md)
+1. [pluck](snippets/pluck.md)
+
 
 ## package manager
 1. [NPM](docs/NPM.md)
