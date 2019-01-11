@@ -30,6 +30,7 @@ Full Stack Web Development
 
 ### 6 kyu
 1. [Replace With Alphabet Position](codewars/Replace-With-Alphabet-Position.md)
+2. [Elections: Weighted Average](codewars/Weighted-Average.md)
 
 ### 5 kyu
 
