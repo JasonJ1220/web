@@ -18,19 +18,24 @@ Full Stack Web Development
 
 ### 8 kyu
 1. [Two-to-One](codewars/Two-to-One.md)
-2. [Find-the-smallest-integer](codewars/Find-the-smallest-integer.md)
+1. [Find-the-smallest-integer](codewars/Find-the-smallest-integer.md)
 
 
 ### 7 kyu
 1. [List-Filtering](codewars/List-Filtering.md)
-2. [Credit Card Mask](codewars/Credit-Card-Mask.md)
-3. [Growth-of-a-Population](codewars/Growth-of-a-Population.md)
-4. [Isograms](codewars/Isograms.md)
-5. [Printer Errors](codewars/Printer-Errors.md)
+1. [Credit Card Mask](codewars/Credit-Card-Mask.md)
+1. [Growth-of-a-Population](codewars/Growth-of-a-Population.md)
+1. [Isograms](codewars/Isograms.md)
+1. [Printer Errors](codewars/Printer-Errors.md)
+1. [Find the divisors](codewars/Find-the-divisors.md)
+2. [Sum of Numbers](codewars/Sum-of-Numbers.md)
+
 
 ### 6 kyu
 1. [Replace With Alphabet Position](codewars/Replace-With-Alphabet-Position.md)
-2. [Elections: Weighted Average](codewars/Weighted-Average.md)
+1. [Elections: Weighted Average](codewars/Weighted-Average.md)
+1. [Find The Parity Outlier](codewars/Find-The-Parity-Outlier.md)
+
 
 ### 5 kyu
 
