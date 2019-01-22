@@ -35,6 +35,11 @@ Full Stack Web Development
 
 
 ### 6 kyu
+1. [IPv4 to int32](codewars/IPv4-to-int32.md)
+1. [Two Sum](codewars/Two-Sum.md)
+1. [Multiplication Tables](codewars/Multiplication-Tables.md)
+1. [Regexp Basics - is it IPv4 address?](codewars/is-it-IPv4-address.md)
+1. [Tribonacci Sequence](codewars/Tribonacci-Sequence.md)
 1. [Replace With Alphabet Position](codewars/Replace-With-Alphabet-Position.md)
 1. [Elections: Weighted Average](codewars/Weighted-Average.md)
 1. [Find The Parity Outlier](codewars/Find-The-Parity-Outlier.md)
@@ -46,12 +51,13 @@ Full Stack Web Development
 1. [Break camelCase](codewars/Break-camelCase.md)
 1. [Highest Scoring Word](codewars/Highest-Scoring-Word.md)
 1. [Vasya - Clerk](codewars/Vasya-Clerk.md)
-
-
-
-
+1. [The Supermarket Queue](codewars/The-Supermarket-Queue.md)
 
 ### 5 kyu
+1. [Concatenating functions](codewars/Concatenating-functions.md)
+1. [Integers: Recreation One](codewars/Recreation-One.md)
+1. [What's a Perfect Power anyway?](codewars/What-a-Perfect-Power-anyway.md)
+1. [Title Case](codewars/Title-Case.md)
 
 
 ## package manager
