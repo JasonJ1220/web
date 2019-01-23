@@ -6,6 +6,10 @@ Full Stack Web Development
 2. [JavaScript编码规范](docs/coding_standard.md)
 1. [LESS](docs/LESS.md)
 
+## 跨域
+[详情](cross-domain/README.md)
+
+
 ## my collection of useful JavaScript snippets
 1. [flow](snippets/flow.md)
 1. [bifurcate](snippets/bifurcate.md)

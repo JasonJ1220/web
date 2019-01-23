@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>响应页面</title>
+</head>
+
+<body>
+    <p style="text-align: center;">这里是3001端口</p>
+    <p>message： <span></span></p>
+    <script>
+        // postMessage跨域适合于同一页面的不同窗体(iframe)，所以在3001这个页面不会收到信息。
+        var input = document.getElementsByTagName('input')[0];
+        var span = document.getElementsByTagName('span')[0];
+        var btn = document.getElementsByTagName('button')[0];
+        var parentWin = window.parent;
+
+        function receiveMessage(event) {
+            if (event.origin !== 'http://localhost:3000') {
+                return false
+            }
+            var data = event.data;
+            span.innerHTML = data;
+            parentWin.postMessage('我收到你的信息了--from 3001 port', 'http://localhost:3000/');
+        }
+        // 监听消息
+        window.addEventListener('message', receiveMessage, false);
+    </script>
+</body>
+
+</html>
