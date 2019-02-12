@@ -41,6 +41,7 @@ Full Stack Web Development
 
 
 ### 6 kyu
+1. [Who likes it?](codewars/Who-likes-it.md)
 1. [Format a string of names like 'Bart, Lisa & Maggie'.](codewars/Format-a-string-of-names.md)
 1. [Simple array rotation](codewars/Simple-array-rotation.md)
 1. [Build a pile of Cubes](codewars/Build-a-pile-of-Cubes.md)
