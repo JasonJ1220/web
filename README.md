@@ -29,6 +29,8 @@ Full Stack Web Development
 
 
 ### 7 kyu
+1. [Find the vowels](codewars/Find-the-vowels.md)
+1. [Jaden Casing Strings](codewars/Jaden-Casing-Strings.md)
 1. [List-Filtering](codewars/List-Filtering.md)
 1. [Credit Card Mask](codewars/Credit-Card-Mask.md)
 1. [Growth-of-a-Population](codewars/Growth-of-a-Population.md)
@@ -39,7 +41,11 @@ Full Stack Web Development
 1. [Complementary DNA](codewars/Complementary-DNA.md)
 
 ### 6 kyu
-1. [IPv4 to int32](codewars/IPv4-to-int32.md)
+1. [Who likes it?](codewars/Who-likes-it.md)
+1. [Format a string of names like 'Bart, Lisa & Maggie'.](codewars/Format-a-string-of-names.md)
+1. [Simple array rotation](codewars/Simple-array-rotation.md)
+1. [Build a pile of Cubes](codewars/Build-a-pile-of-Cubes.md)
+2. [IPv4 to int32](codewars/IPv4-to-int32.md)
 1. [Two Sum](codewars/Two-Sum.md)
 1. [Multiplication Tables](codewars/Multiplication-Tables.md)
 1. [Regexp Basics - is it IPv4 address?](codewars/is-it-IPv4-address.md)
@@ -58,6 +64,8 @@ Full Stack Web Development
 1. [The Supermarket Queue](codewars/The-Supermarket-Queue.md)
 
 ### 5 kyu
+
+1. [Human Readable Time](codewars/Human-Readable-Time.md)
 1. [Concatenating functions](codewars/Concatenating-functions.md)
 1. [Integers: Recreation One](codewars/Recreation-One.md)
 1. [What's a Perfect Power anyway?](codewars/What-a-Perfect-Power-anyway.md)
