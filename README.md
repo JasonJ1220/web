@@ -18,8 +18,10 @@ Full Stack Web Development
 1. [intersection](snippets/intersection.md)
 1. [pluck](snippets/pluck.md)
 
-## codewars
+## interviews
+[详情](interviews/README.md)
 
+## codewars
 ### 8 kyu
 1. [Two to One](codewars/Two-to-One.md)
 1. [Find the smallest integer](codewars/Find-the-smallest-integer.md)
@@ -35,8 +37,6 @@ Full Stack Web Development
 1. [Find the divisors](codewars/Find-the-divisors.md)
 1. [Sum of Numbers](codewars/Sum-of-Numbers.md)
 1. [Complementary DNA](codewars/Complementary-DNA.md)
-
-
 
 ### 6 kyu
 1. [IPv4 to int32](codewars/IPv4-to-int32.md)
