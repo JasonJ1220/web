@@ -387,18 +387,529 @@ function handleClick(e) {
 rel ="noopener"属性是`<a>`元素中使用的属性。它会阻止页面具有window.opener属性，该属性将指向打开链接的页面，并允许从超链接打开的页面操作超链接所在的页面。
 
 ### 11.What is HTML5 Web Storage? Explain localStorage and sessionStorage.
+---
 存储容量限制比使用cookie要大得多（至少5MB），而且速度更快。
 
 localStorage：存储的数据是永久性的
 sessionStorage：与存储数据的顶级窗口或浏览器选项卡具有相同的生命周期
 
-
-
-
-
 ## JavaScript
-### 6.What is the difference between the equality operators == and ===?
+### 1.What is the difference between the equality operators == and ===?
+---
 === 更严格，要求类型和数值都相等
 == 只进行值比较 如 `0==false` 为 `true`
 尽可能的使用 === 
 
+### 2.What is the difference between an element and a component in React?
+---
+1. element就是React实现界面内容的最小单元，它代表了虚拟DOM中的一个对象。它描述了组件实例和DOM节点的关系在React中，通过使用React.createElment可以实现虚拟DOM节点。
+2. component 就是一个方法或者一个类，可以接受一定的输入，之后返回一个React element 树结构。
+
+### 3.What is the difference between the postfix i++ and prefix ++i increment operators?
+---
+作为赋值的结果不一样，如：
+```
+let i = 0,
+    a = i++; // a = 0
+// i === 1
+
+let i = 0,
+    a = ++i; // a = 1
+// i === 1
+```
+
+### 4.In which states can a Promise be?
+---
+- pending
+- fulfilled
+- rejected
+
+### 5.What is a stateless component?
+---
+无状态组件 是一种只负责展示的纯组件,依赖props渲染显示，避免使用this关键字。
+
+### 6.What is a stateful component in React?
+---
+有状态组件 在无状态组件的基础上，如果组件内部包含状态（state）且状态随着事件或者外部的消息而发生改变的时候，这就构成了有状态组件（Stateful Component）。有状态组件通常会带有生命周期(lifecycle)，用以在不同的时刻触发状态的更新。这种组件也是通常在写业务逻辑中最经常使用到的，根据不同的业务场景组件的状态数量以及生命周期机制也不尽相同。
+
+### 7.Create a function batches that returns the maximum number of whole batches that can be cooked from a recipe.
+```
+/**
+It accepts two objects as arguments: the first object is the recipe
+for the food, while the second object is the available ingredients.
+Each ingredient's value is number representing how many units there are.
+
+`batches(recipe, available)`
+*/
+
+// 0 batches can be made
+batches(
+  { milk: 100, butter: 50, flour: 5 },
+  { milk: 132, butter: 48, flour: 51 }
+)
+batches(
+  { milk: 100, flour: 4, sugar: 10, butter: 5 },
+  { milk: 1288, flour: 9, sugar: 95 }
+)
+
+// 1 batch can be made
+batches(
+  { milk: 100, butter: 50, cheese: 10 },
+  { milk: 198, butter: 52, cheese: 10 }
+)
+
+// 2 batches can be made
+batches(
+  { milk: 2, sugar: 40, butter: 20 },
+  { milk: 5, sugar: 120, butter: 500 }
+)
+```
+---
+
+```
+const batches = (recipe, available) =>
+  Math.floor(
+    Math.min(...Object.keys(recipe).map(k => available[k] / recipe[k] || 0))
+  )
+```
+
+### 8.Create a standalone function bind that is functionally equivalent to the method Function.prototype.bind.
+```
+function example() {
+  console.log(this)
+}
+const boundExample = bind(example, { a: true })
+boundExample.call({ b: true }) // logs { a: true }
+```
+---
+```
+let bind=(fn,context)=>(...args)=>fn.apply(context,args)
+```
+
+
+### 9.What is the purpose of callback function as an argument of setState?
+---
+1. setState是异步的, 执行完成之后会调用callback;
+2. 推荐使用生命周期的 componentDidUpdate 方法替代callback ;
+
+### 10.What is a callback? Can you show an example using one?
+---
+1. 事件订阅
+```
+function onClick() {
+  console.log("The user clicked on the page.")
+}
+document.addEventListener("click", onClick)
+```
+2. 回调函数
+```
+const map = (arr, callback) => {
+  const result = []
+  for (let i = 0; i < arr.length; i++) {
+    result.push(callback(arr[i], i))
+  }
+  return result
+}
+map([1, 2, 3, 4, 5], n => n * 2) // [2, 4, 6, 8, 10]
+```
+
+### 11.How do you clone an object in JavaScript?
+---
+1. 使用...结构赋值
+```
+const obj = { a: 1, b: 2 }
+const shallowClone = { ...obj }
+```
+2. Object.assign
+3. JSON.parse(JSON.stringify(obj)
+
+### 12.How do you compare two objects in JavaScript?
+```
+function isDeepEqual(obj1, obj2, testPrototypes = false) {
+  if (obj1 === obj2) {
+    return true
+  }
+
+  if (typeof obj1 === "function" && typeof obj2 === "function") {
+    return obj1.toString() === obj2.toString()
+  }
+
+  if (obj1 instanceof Date && obj2 instanceof Date) {
+    return obj1.getTime() === obj2.getTime()
+  }
+
+  if (
+    Object.prototype.toString.call(obj1) !==
+      Object.prototype.toString.call(obj2) ||
+    typeof obj1 !== "object"
+  ) {
+    return false
+  }
+
+  const prototypesAreEqual = testPrototypes
+    ? isDeepEqual(
+        Object.getPrototypeOf(obj1),
+        Object.getPrototypeOf(obj2),
+        true
+      )
+    : true
+
+  const obj1Props = Object.getOwnPropertyNames(obj1)
+  const obj2Props = Object.getOwnPropertyNames(obj2)
+
+  return (
+    obj1Props.length === obj2Props.length &&
+    prototypesAreEqual &&
+    obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))
+  )
+}
+```
+
+### 13.What is CORS?
+---
+出于保护用户安全的原因，浏览器限制了跨域的HTTP请求。XMLHttpRequest 和 fetch 都遵循同域的原则，也就是说跨域调用的对端的response 要包含CORS 头，才可以。
+
+### 14.What is event delegation and why is it useful? Can you show an example of how to use it?
+---
+Event.target - 返回触发事件的元素
+Event.currentTarget- 返回绑定事件的元素
+
+target事件委托的定义：本来该自己干的事，但是自己不干，交给别人来干（通常都是子节点交给父节点去监听事件，然后通过事件冒泡的特性和e.target 来控制相应的子节点去处理事件）。一般用到for循环遍历节点添加事件的时候都可以用事件委托来做，可以提高性能。
+```
+document.addEventListener("click", e => {
+  if (e.target.closest("button")) {
+    handleButtonClick()
+  }
+})
+```
+
+### 15.What is the difference between an expression and a statement in JavaScript?
+---
+如果你能把它打印出来或者赋值给一个变量，它就是一个表达式。如果你不能，这是一个声明。
+
+```
+// 函数声明
+function funDeclaration(type){
+    return type==="Declaration";
+}
+// 函数表达式
+var funExpression = function(type){
+    return type==="Expression";
+}
+```
+　Javascript 中函数声明和函数表达式是存在区别的，函数声明在JS解析时进行函数提升，因此在同一个作用域内，不管函数声明在哪里定义，该函数都可以进行调用。而函数表达式的值是在JS运行时确定，并且在表达式赋值完成后，该函数才能调用。
+
+### 16.What are truthy and falsy values in JavaScript?
+---
+false:
+1. false
+1. null
+1. undefined
+1. 0
+1. ''
+1. NaN
+
+### 17.Generate an array, containing the Fibonacci sequence, up until the nth term.
+---
+```
+(n)=>[...Array(n+1)].reduce((result,a,i)=>result.concat(i>1?result[i-2]+result[i-1]:i),[]).slice(1)
+```
+
+### 18.What does 0.1 + 0.2 === 0.3 evaluate to?
+---
+false;
+```
+(a,b,m)=>Math.abs(a-b)<m
+```
+
+### 19.What is the difference between the array methods map() and forEach()?
+---
+map 构造数组
+forEach 轮询数组
+
+### 20.What will the console log in this example?
+```
+var foo = 1
+var foobar = function() {
+  console.log(foo)
+  var foo = 2
+}
+foobar()
+```
+---
+undefined
+
+状态提升，不伴随着赋值提升。
+相当于
+```
+var foo = 1
+var foobar = function() {
+  var foo;
+  console.log(foo)
+  foo = 2
+}
+foobar()
+```
+
+### 21.How does hoisting work in JavaScript?
+---
+1. 声明提升是JavaScript默认行为。
+2. 声明方法提升 优先于 声明变量提升
+```
+myFunction() // No error; logs "hello"
+function myFunction() {
+  console.log("hello")
+}
+myFunction() // Error: `myFunction` is not a function
+var myFunction = function() {
+  console.log("hello")
+}
+```
+
+### 22.What is the reason for wrapping the entire contents of a JavaScript source file in a function that is immediately invoked?
+---
+1. 在主流JavaScript框架中经常使用。
+2. 提供私有的命名空间
+
+### 23.What are inline conditional expressions?
+---
+```
+\\ error
+function App({ messages, isVisible }) {
+  return (
+    <div>
+      if (messages.length > 0) {
+        <h2>You have {messages.length} unread messages.</h2>
+      } else {
+        <h2>You have no unread messages.</h2>
+      }
+      if (isVisible) {
+        <p>I am visible.</p>
+      }
+    </div>
+  )
+}
+
+\\correct
+function App({ messages, isVisible }) {
+  return (
+    <div>
+      {messages.length > 0 ? (
+        <h2>You have {messages.length} unread messages.</h2>
+      ) : (
+        <h2>You have no unread messages.</h2>
+      )}
+      {isVisible && <p>I am visible.</p>}
+    </div>
+  )
+}
+```
+
+### 24.What is a key? What are the benefits of using it in lists?
+---
+1. Keys 可以在 DOM 中的某些元素被增加或删除的时候帮助 React 识别哪些元素发生了变化。因此你应当给数组中的每一个元素赋予一个确定的标识。
+2. 不要用index
+3. 如果 list中的 item是子组件的话，那么它的key应该由它的父组件决定。
+
+### 25.What is the difference between lexical scoping and dynamic scoping?
+---
+词法作用域，也叫静态作用域，它的作用域是指在词法分析阶段就确定了，不会改变。动态作用域是在运行时根据程序的流程信息来动态确定的，而不是在写代码时进行静态确定的。
+
+动态作用域是在运行时根据程序的流程信息来动态确定的，而不是在写代码时进行静态确定的。
+```
+var a = 2;
+
+function foo() {
+  console.log(a); // 会输出2还是3？
+}
+
+function bar() {
+  var a = 3;
+  foo();
+}
+
+bar();
+```
+如果是静态作用域 会输出2；
+如果是动态作用域 会输出3；
+
+**词法作用域关注函数在何处声明，而动态作用域关注函数从何处调用。**
+
+### 26.Create a function that masks a string of characters with # except for the last four (4) characters.
+---
+N多方案
+```
+const mask = (str, maskChar = "#") =>
+  str.slice(-4).padStart(str.length, maskChar)
+```
+
+### 27.What is a MIME type and what is it used for?
+---
+Multi-purpose Internet Mail Extensions-两部分构成 类型/子类型
+
+### 28.What is the difference between null and undefined?
+---
+null是显式赋值，而undefined定义为未赋值。
+undefined == null
+typeof null === 'object'
+
+### 29.Describe the different ways to create an object. When should certain ways be preferred over others?
+class Person 两个属性 name,age 一个方法 birthday
+---
+对象字面量方式：
+```
+const person = {
+  name: "John",
+  age: 50,
+  birthday() {
+    this.age++
+  }
+}
+person.birthday() // person.age === 51
+```
+构造函数
+```
+function Person(name, age){
+  this.name = name
+  this.age = age
+}
+Person.prototype.birthday = function() {
+  this.age++
+}
+const person1 = new Person("John", 50)
+const person2 = new Person("Sally", 20)
+person1.birthday() // person1.age === 51
+person2.birthday() // person2.age === 21
+```
+工厂方法
+```
+const createPerson = (name, age) => {
+  const birthday = () => person.age++
+  const person = { name, age, birthday }
+  return person
+}
+const person = createPerson("John", 50)
+person.birthday() // person.age === 51
+```
+Object.create()
+```
+const personProto = {
+  birthday() {
+    this.age++
+  }
+}
+const person = Object.create(personProto)
+person.age = 50
+person.birthday() // person.age === 51
+```
+
+### 30.What is the difference between a parameter and an argument?
+---
+argument是一个类数组的对象，包含了调用函数的参数。
+
+### 31.Does JavaScript pass by value or by reference?
+---
+值传递
+
+### 32.How do you pass an argument to an event handler or callback?
+---
+```
+<button onClick={() => this.handleClick(id)} />
+<button onClick={this.handleClick.bind(this, id)} />
+```
+
+### 33.What are Promises?
+---
+```
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("result")
+  }, 100)
+})
+  .then(console.log)
+  .catch(console.error)
+```
+
+### 34.How does prototypal inheritance differ from classical inheritance?
+---
+classical inheritance
+构造函数 new
+
+prototypal inheritance
+继承自其他对象 工厂方法 object.create()
+
+### 35.What is the output of the following code?
+```
+const a = [1, 2, 3]
+const b = [1, 2, 3]
+const c = "1,2,3"
+
+console.log(a == c)
+console.log(a == b)
+```
+---
+true false
+JavaScript  ==会自动进行类型转换，对比string的值
+而两个对象比较 则为referance比较。
+
+### 36.What does the following function return?
+```
+function greet() {
+  return
+  {
+    message: "hello"
+  }
+}
+```
+undefined 
+return在当前行自动加分号
+
+### 37.Are semicolons required in JavaScript?
+---
+我认为必须加。
+
+### 38.What is short-circuit evaluation in JavaScript?
+---
+```
+true || false // true
+false && true // false
+```
+逻辑操作不会产生布尔值，除非操作数的值是布尔值。
+
+### 39.What is the difference between synchronous and asynchronous code in JavaScript?
+---
+Synchronous means each operation must wait for the previous one to complete.
+Asynchronous means an operation can occur while another operation is still being processed.
+
+JavaScript 事件轮询
+
+### 40.What does the following code evaluate to?
+```
+typeof typeof 0
+```
+---
+string
+
+### 41.What are JavaScript data types?
+---
+Boolean, Null, Undefined, Number, String, Symbol
+
+### 42.What are the differences between var, let, const and no keyword statements?
+---
+1. const定义的变量不可以修改，而且必须初始化。
+2. 通过var定义的变量，作用域是整个封闭函数，是全域的。
+3. let是块级作用域，函数内部使用let定义后，对函数外部无影响。let不赋值直接使用会报错。let不允许在相同作用域内，重复声明同一个变量。
+
+### 43.What is a cross-site scripting attack (XSS) and how do you prevent it?
+---
+1. 一旦在DOM解析过程成出现不在预期内的改变（JS代码执行或样式大量变化时），就可能发生XSS攻击
+1. XSS分为反射型XSS，存储型XSS和DOM XSS
+1. 反射型XSS是在将XSS代码放在URL中，将参数提交到服务器。服务器解析后响应，在响应结果中存在XSS代码，最终通过浏览器解析执行。
+1. 存储型XSS是将XSS代码存储到服务端（数据库、内存、文件系统等），在下次请求同一个页面时就不需要带上XSS代码了，而是从服务器读取。
+1. DOM XSS的发生主要是在JS中使用eval造成的，所以应当避免使用eval语句。
+1. XSS危害有盗取用户cookie，通过JS或CSS改变样式，DDos造成正常用户无法得到服务器响应。
+1. XSS代码的预防主要通过对数据解码，再过滤掉危险标签、属性和事件等。
+
+解决方案
+1. 转义关键字 如'/,<,>,\'等等
+2. 正如其名称，innerHTML 返回 HTML 文本。通常，为了在元素中检索或写入文本，人们使用innerHTML。但是，textContent通常具有更好的性能，因为文本不会被解析为HTML。此外，使用textContent可以防止 XSS 攻击。
