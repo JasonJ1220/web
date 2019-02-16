@@ -913,3 +913,390 @@ Boolean, Null, Undefined, Number, String, Symbol
 解决方案
 1. 转义关键字 如'/,<,>,\'等等
 2. 正如其名称，innerHTML 返回 HTML 文本。通常，为了在元素中检索或写入文本，人们使用innerHTML。但是，textContent通常具有更好的性能，因为文本不会被解析为HTML。此外，使用textContent可以防止 XSS 攻击。
+
+### 44.What is Big O Notation?
+---
+当执行时间呈指数增长时，要小心嵌套循环。
+
+### 45.How can you avoid callback hells?
+---
+1. promise
+2. generator函数
+3. async/await语法
+4. 模块化:将回调分解为独立的函数
+
+### 46.Which is the preferred option between callback refs and findDOMNode()?
+---
+callback refs 
+```
+class MyComponent extends Component {
+  componentDidMount() {
+    this.node.scrollIntoView()
+  }
+
+  render() {
+    return <div ref={node => (this.node = node)} />
+  }
+}
+```
+
+### 47.What is the children prop?
+---
+1. children 是 props 的一个特殊属性。专门用来传递子组件，可以为任何数据类型。
+2. react提供了特殊的API与这个属性协同工作。如React.Children.map, React.Children.forEach, React.Children.count, React.Children.only 和 React.Children.toArray.
+
+
+```
+function GenericBox({ children }) {
+  return <div className="container">{children}</div>
+}
+
+function App() {
+  return (
+    <GenericBox>
+      <span>Hello</span> <span>World</span>
+    </GenericBox>
+  )
+}
+```
+
+### 48.What is a closure? Can you give a useful example of one?
+---
+闭包就是能够读取其他函数内部变量的函数。
+```
+function f1(){
+　　var n=999;
+　　nAdd=function(){n+=1}
+　　function f2(){
+　　　　alert(n);
+　　}
+　　return f2;//f2就是闭包
+}
+var result=f1();
+result(); // 999
+nAdd();
+result(); // 1000
+```
+
+### 49.What is context?(React)
+---
+1. 用于共享数据
+2. 等同于react-redux中的provider
+```
+<Provider store={store}>
+    <App />
+</Provider>
+```
+
+### 50.What is event-driven programming?
+---
+拥有事件驱动方法 on 和 emit
+```
+document.addEventListener("click", function(event) {
+  // This callback function is run when the user
+  // clicks on the document.
+})
+
+const hub = createEventHub()
+hub.on("message", function(data) {
+  console.log(`${data.username} said ${data.text}`)
+})
+hub.emit("message", {
+  username: "John",
+  text: "Hello?"
+})
+```
+
+### 51.What are fragments?
+---
+相当于一个虚拟DOM对象，允许从组件返回的多个元素分组，而Fragment自身并不算添加任何实际DOM元素。
+```
+render() {
+  return (
+    <React.Fragment>
+      <ChildA />
+      <ChildB />
+      <ChildC />
+    </React.Fragment>
+  );
+}
+```
+
+### 52.What is functional programming?
+---
+1. 支持函数式编程的JavaScript特性(map,reduce等)
+2. 更干净、更简洁的开发经验
+3. 如redux
+
+### 53.Explain the differences between imperative and declarative programming.
+---
+**命令式编程：**一步一步告诉计算机先做什么再做什么。
+```
+const numbers = [1, 2, 3, 4, 5]
+const numbersDoubled = []
+for (let i = 0; i < numbers.length; i++) {
+  numbersDoubled[i] = numbers[i] * 2
+}
+```
+**声明式编程：**应该做什么，但不指定具体要怎么做。如sql：
+```
+SELECT * FROM collection WHERE num > 5
+```
+又如：
+```
+const numbers = [1, 2, 3, 4, 5]
+const numbersDoubled = numbers.map(n => n * 2)
+```
+
+声明式编程通常使用函数和表达式。命令式编程经常使用语句并依赖于导致突变的低级特性，而声明式编程则非常注重抽象和纯粹性。
+声明式编程更简洁，更容易处理。
+
+### 54.What is memoization?
+---
+Memoization是缓存函数调用的输出以使后续调用更快的过程。再次使用相同的输入调用函数将返回缓存的输出，而不需要再次进行计算。
+```
+const memoize = fn => {
+  const cache = new Map()
+  return value => {
+    const cachedResult = cache.get(value)
+    if (cachedResult !== undefined) return cachedResult
+    const result = fn(value)
+    cache.set(value, result)
+    return result
+  }
+}
+```
+
+### 55.How do you ensure methods have the correct `this` context in React component classes?
+---
+1. 在 constructor 里 对函数 执行bind(this)操作
+```
+constructor(props) {
+  super(props);
+  this.handleClick = this.handleClick.bind(this);
+}
+handleClick() {
+  // Perform some logic
+}
+```
+2. 在事件订阅后 使用=>表达式 handler函数
+```
+handleClick = () => {
+  console.log('this is:', this);
+}
+render() {
+  return (
+    <button onClick={this.handleClick}>
+      Click me
+    </button>
+  );
+}
+```
+3. 直接在事件订阅处 使勇=> 封装 handler函数
+```
+<button onClick={e => this.handleClick(e)}>Click me</button>
+```
+
+
+### 56.Contrast mutable and immutable values, and mutating vs non-mutating methods.
+---
+说明一些会引发原数组变化的数组方法
+```
+const myString = "hello!"
+myString.replace("!", "") // returns a new string, cannot mutate the original value
+
+const originalArray = [1, 2, 3]
+originalArray.push(4) // mutates originalArray, now [1, 2, 3, 4]
+originalArray.concat(4) // returns a new array, does not mutate the original
+```
+
+### 57.What is the only value not equal to itself in JavaScript?
+---
+NaN
+要使用Number.isNaN()去判断是否为NaN
+```
+const isNaN = x => x !== x
+```
+
+### 58.Create a function pipe that performs left-to-right function composition by returning a function that accepts one argument.
+```
+const square = v => v * v
+const double = v => v * 2
+const addOne = v => v + 1
+const res = pipe(square, double, addOne)
+res(3) // 19; addOne(double(square(3)))
+```
+---
+```
+var pipe = (...fns)=>(v)=>fns.reduce((a,b)=>b(a),v)
+```
+
+### 59.What are portals in React?
+---
+Portals 提供了一种很好的将子节点渲染到父组件以外的 DOM 节点的方式。
+ReactDOM.createPortal(child, container)
+第一个参数（child）是任何可渲染的 React 子元素，例如一个元素，字符串或碎片。第二个参数（container）则是一个 DOM 元素。
+应用场景：左右移动组件，模态框组件
+
+
+### 60.What is a pure function?
+---
+1.给定输入 有确定性的输出
+2.没有副作用(对函数之外的数据或提供给函数的参数进行改变)的函数
+
+**Pure**
+```
+const a = (x, y) => x + y
+const b = (arr, value) => arr.concat(value)
+const c = arr => [...arr].sort((a, b) => a - b)
+```
+**Impure**
+```
+const a = (x, y) => x + y + Math.random()
+const b = (arr, value) => (arr.push(value), arr)
+const c = arr => arr.sort((a, b) => a - b)
+```
+
+### 61.What is recursion and when is it useful?
+---
+举例：
+```
+const nest = (items, id = null, link = "parent_id") =>
+  items
+    .filter(item => item[link] === id)
+    .map(item => ({ ...item, children: nest(items, item.id) }))
+
+const comments = [
+  { id: 1, parent_id: null, text: "First reply to post." },
+  { id: 2, parent_id: 1, text: "First reply to comment #1." },
+  { id: 3, parent_id: 1, text: "Second reply to comment #1." },
+  { id: 4, parent_id: 3, text: "First reply to comment #3." },
+  { id: 5, parent_id: 4, text: "First reply to comment #4." },
+  { id: 6, parent_id: null, text: "Second reply to post." }
+]
+
+nest(comments)
+/*
+[
+  { id: 1, parent_id: null, text: "First reply to post.", children: [...] },
+  { id: 6, parent_id: null, text: "Second reply to post.", children: [] }
+]
+*/
+```
+
+在处理包含未知数量嵌套结构的数据结构时，递归非常有用。
+递归必须满足一个跳出循环的基本条件，否则它将无限期地调用自己。
+
+### 62.What are refs in React? When should they be used?
+---
+1. 返回element的引用
+2. 不应该过度使用
+3. 使用方法：
+```
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.myRef = React.createRef()
+  }
+
+  render() {
+    return <div ref={this.myRef} />
+  }
+}
+```
+
+什么时候应该用：
+- Managing focus, text selection, or media playback.
+- Triggering imperative animations.
+- Integrating with third-party DOM libraries.
+
+### 63.Explain the difference between a static method and an instance method.
+---
+```
+Array.isArray // static method of Array
+Array.prototype.push // instance method of Array
+```
+
+### 64.What is the this keyword and how does it work?
+---
+1. 对象字面量
+```
+var myObject = {
+  property: this,
+  regularFunction: function() {
+    return this
+  },
+  arrowFunction: () => {
+    return this
+  },
+  iife: (function() {
+    return this
+  })()
+}
+myObject.regularFunction() // myObject
+myObject["regularFunction"]() // my Object
+myObject.property // NOT myObject; lexical `this`
+myObject.arrowFunction() // NOT myObject; lexical `this`
+myObject.iife // NOT myObject; lexical `this`
+const regularFunction = myObject.regularFunction
+regularFunction() // NOT myObject; lexical `this`
+```
+
+2. 事件监听
+```
+document.body.addEventListener("click", function() {
+  console.log(this) // document.body
+})
+```
+
+3. 构造函数
+```
+class Example {
+  constructor() {
+    console.log(this) // myExample
+  }
+}
+const myExample = new Example()
+```
+
+4. call() 和 apply()
+```
+var myFunction = function() {
+  return this
+}
+myFunction.call({ customThis: true }) // { customThis: true }
+```
+
+5. this的改变
+```
+var obj = {
+  arr: [1, 2, 3],
+  doubleArr() {
+    return this.arr.map(function(value) {
+      // this is now this.arr
+      return this.double(value)
+    })
+  },
+  double() {
+    return value * 2
+  }
+}
+obj.doubleArr() // Uncaught TypeError: this.double is not a function
+```
+
+### 65.What is the purpose of JavaScript UI libraries/frameworks like React, Vue, Angular, Hyperapp, etc?
+---
+1. 虚拟DOM是以普通对象的形式表示实际DOM树的，它允许库编写代码，就好像整个文档在每次更改时都被丢弃并重新构建，而实际DOM只更新需要更改的内容。由于与重新计算虚拟DOM相比，更改实际DOM节点的开销更大，因此将新虚拟DOM与前一个虚拟DOM进行比较可以提高效率。
+2. JSX是JavaScript的扩展，它提供类似xml的语法来创建虚拟DOM对象，通过转换器将这些对象转换为函数调用。与标记的模板文本相比，它简化了控制流(if语句/三元表达式)。
+
+### 66. What does 'use strict' do and what are some of the key benefits to using it?
+---
+- 消除 this 强制赋值，当引用null或undefined值时抛出错误。
+- 在无效使用delete时抛出错误。
+- 禁止在ECMAScript的未来版本中定义某些语法
+
+
+
+### 67. What is a virtual DOM and why is it used in libraries/frameworks?
+---
+修改虚拟dom比修改真实dom效率高
