@@ -9,6 +9,12 @@ Full Stack Web Development
 ## 跨域
 [详情](cross-domain/README.md)
 
+## 正则表达式
+[详情](https://www.jb51.net/tools/zhengze.html)
+
+## 算法
+- [组合](arithmetic/组合.md)
+
 
 ## my collection of useful JavaScript snippets
 1. [flow](snippets/flow.md)
