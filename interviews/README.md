@@ -655,7 +655,9 @@ foobar()
 ### 21.How does hoisting work in JavaScript?
 ---
 1. 声明提升是JavaScript默认行为。
-2. 声明方法提升 优先于 声明变量提升
+1. JavaScript 会自动把 var 和 function 声明移动到顶部。
+1. 函数声明会被完整地提升。 变量只会被部分提升。例如只有 var 的声明会被提升，而赋值则不会。
+1. 声明方法提升 优先于 声明变量提升
 ```
 myFunction() // No error; logs "hello"
 function myFunction() {
@@ -897,9 +899,29 @@ Boolean, Null, Undefined, Number, String, Symbol
 
 ### 42.What are the differences between var, let, const and no keyword statements?
 ---
-1. const定义的变量不可以修改，而且必须初始化。
-2. 通过var定义的变量，作用域是整个封闭函数，是全域的。
-3. let是块级作用域，函数内部使用let定义后，对函数外部无影响。let不赋值直接使用会报错。let不允许在相同作用域内，重复声明同一个变量。
+- var
+在 ES6 之前，只有 var 一种声明变量的方法。在某一函数内部声明的变量和方法只能在其函数作用域内部访问到。
+一些在例如 if 或者 for 语句的块作用域内声明的变量，能够在其包含的大括号外被访问到。
+
+- let
+它不会被提升，且可以在块级作用域内生效。
+```
+let g1 = 'global 1'
+let g2 = 'global 2'
+{   /* Creating a new block scope */
+  g1 = 'new global 1'
+  let g2 = 'local global 2'
+  console.log(g1)   // 'new global 1'
+  console.log(g2)   // 'local global 2'
+  console.log(g3)   // ReferenceError: g3 is not defined
+  let g3 = 'I am not hoisted';
+}
+console.log(g1)    // 'new global 1'
+console.log(g2)    // 'global 2' 
+```
+
+
+**注意：未使用 var，let 或 const 关键字声明的变量会自动变成全局变量。**
 
 ### 43.What is a cross-site scripting attack (XSS) and how do you prevent it?
 ---

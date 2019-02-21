@@ -6,6 +6,10 @@ Full Stack Web Development
 2. [JavaScript编码规范](docs/coding_standard.md)
 1. [LESS](docs/LESS.md)
 
+## ES6/ES7
+1. [Promise](docs/promise.md)
+1. [Fetch(不属于ES6)](docs/ .md)
+
 ## 跨域
 [详情](cross-domain/README.md)
 
