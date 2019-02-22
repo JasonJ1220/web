@@ -3,8 +3,9 @@ Full Stack Web Development
 
 ## JavaScript/HTML/CSS
 1. [web前端日常总结](docs/summary.md)
-2. [JavaScript编码规范](docs/coding_standard.md)
+1. [JavaScript编码规范](docs/coding_standard.md)
 1. [LESS](docs/LESS.md)
+1. [toString()、toLocaleString()和valueOf()](docs/toString-toLocaleString-valueOf.md) 
 
 ## ES6/ES7
 1. [Promise](docs/promise.md)
