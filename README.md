@@ -12,6 +12,10 @@ Full Stack Web Development
 1. [proxy](docs/proxy.md)
 1. [Promise](docs/promise.md)
 1. [Fetch(不属于ES6)](docs/fetch.md)
+1. [Map](docs/map.md) 
+1. [Set](docs/set.md) 
+1. [for...of](docs/for-of.md) 
+1. [Proxy](docs/proxy.md) 
 
 ## 跨域
 [详情](cross-domain/README.md)
