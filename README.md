@@ -16,6 +16,7 @@ Full Stack Web Development
 1. [Set](docs/set.md) 
 1. [for...of](docs/for-of.md) 
 1. [Proxy](docs/proxy.md) 
+1. [Decorator](docs/decorator.md)
 
 ## 跨域
 [详情](cross-domain/README.md)
