@@ -8,8 +8,10 @@ Full Stack Web Development
 1. [toString()、toLocaleString()和valueOf()](docs/toString-toLocaleString-valueOf.md) 
 
 ## ES6/ES7
+1. [class](docs/class.md)
+1. [proxy](docs/proxy.md)
 1. [Promise](docs/promise.md)
-1. [Fetch(不属于ES6)](docs/ .md)
+1. [Fetch(不属于ES6)](docs/fetch.md)
 
 ## 跨域
 [详情](cross-domain/README.md)
