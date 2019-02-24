@@ -9,6 +9,10 @@ Full Stack Web Development
 1. [Promise原理](https://segmentfault.com/a/1190000009478377)
 1. [ES5继承](docs/ES5继承.md)
 
+## js中的各种位置
+![](https://images2015.cnblogs.com/blog/746339/201509/746339-20150915163721539-1441659862.jpg)
+
+
 ## ES6/ES7
 1. [class](ES6/class.md)
 1. [proxy](ES6/proxy.md)
@@ -37,6 +41,10 @@ Full Stack Web Development
 
 ## 算法
 - [组合](arithmetic/组合.md)
+- [快速排序](arithmetic/快速排序.md)
+- [数组去重](https://www.cnblogs.com/pangzai/p/4809331.html)
+- [瀑布流](arithmetic/瀑布流.md)
+
 
 
 ## my collection of useful JavaScript snippets
