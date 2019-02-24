@@ -6,17 +6,19 @@ Full Stack Web Development
 1. [JavaScript编码规范](docs/coding_standard.md)
 1. [LESS](docs/LESS.md)
 1. [toString()、toLocaleString()和valueOf()](docs/toString-toLocaleString-valueOf.md) 
+1. [Promise原理](https://segmentfault.com/a/1190000009478377)
+1. [ES5继承](docs/ES5继承.md)
 
 ## ES6/ES7
-1. [class](docs/class.md)
-1. [proxy](docs/proxy.md)
-1. [Promise](docs/promise.md)
-1. [Fetch(不属于ES6)](docs/fetch.md)
-1. [Map](docs/map.md) 
-1. [Set](docs/set.md) 
-1. [for...of](docs/for-of.md) 
-1. [Proxy](docs/proxy.md) 
-1. [Decorator](docs/decorator.md)
+1. [class](ES6/class.md)
+1. [proxy](ES6/proxy.md)
+1. [Promise](ES6/promise.md)
+1. [Fetch(不属于ES6)](ES6/fetch.md)
+1. [Map](ES6/map.md) 
+1. [Set](ES6/set.md) 
+1. [for...of](ES6/for-of.md) 
+1. [Proxy](ES6/proxy.md) 
+1. [Decorator](ES6/decorator.md)
 
 ## 跨域
 [详情](cross-domain/README.md)
