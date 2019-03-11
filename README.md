@@ -9,6 +9,10 @@ Full Stack Web Development
 1. [Promise原理](https://segmentfault.com/a/1190000009478377)
 1. [ES5继承](docs/ES5继承.md)
 
+### 高性能Javascript
+1. [脚本的无阻塞加载策略](docs/脚本的无阻塞加载策略.md)
+
+
 ## js中的各种位置
 ![](https://images2015.cnblogs.com/blog/746339/201509/746339-20150915163721539-1441659862.jpg)
 
