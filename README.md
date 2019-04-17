@@ -116,3 +116,4 @@ Full Stack Web Development
 ## package manager
 1. [NPM](docs/NPM.md)
 2. [yarn](docs/yarn.md)
+3. [nrm](docs/nrm.md)
