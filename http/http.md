@@ -236,7 +236,7 @@ CONNECT www.example.com:443 HTTP/1.1
 | 首部字段名 | 说明 |
 | :--: | :--: |
 | Cache-Control | 控制缓存的行为 |
-| Connection | 控制不再转发给代理的首部字段、管理持久连接|
+| Connection | 控制不再转发给代理的首部字段、管理持久连接 |
 | Date | 创建报文的日期时间 |
 | Pragma | 报文指令 |
 | Trailer | 报文末端的首部一览 |
@@ -880,10 +880,3 @@ DELETE /idX/delete HTTP/1.1   -> Returns 404
 - [Symmetric vs. Asymmetric Encryption – What are differences?](https://www.ssl2buy.com/wiki/symmetric-vs-asymmetric-encryption-what-are-differences)
 - [Web 性能优化与 HTTP/2](https://www.kancloud.cn/digest/web-performance-http2)
 - [HTTP/2 简介](https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn)
-
-
-
-
-
-
-<div align="center"><img width="320px" src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/githubio/公众号二维码-2.png"></img></div>
