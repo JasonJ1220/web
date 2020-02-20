@@ -1050,3 +1050,83 @@ let reverse = function<U>(y: U): U {
 
 identity = reverse;  // Okay because (x: any)=>any matches (y: any)=>any
 ```
+
+# React 中的 TypeScript
+## 类组件的使用
+```
+interface IProps {
+  name: string;
+}
+
+interface IState {
+  color: "red" | "blueviolet"
+}
+class Home extends React.Component<IProps, IState> {
+  constructor(props: IProps){
+    super(props);
+    this.state = {
+      color: "red"
+    }
+  }
+
+  public onClickColor = () => {
+    const { color } = this.state;
+    if (color === "red") {
+      this.setState({
+        color: "blueviolet"
+      });
+    }
+    if (color === "blueviolet") {
+      this.setState({
+        color: "red"
+      });
+    }
+  }
+
+  public render(){
+    const { name } = this.props;
+    const { color } = this.state;
+    return (
+      <div>
+        <span style={{ color }}>{ name }</span>
+        <button onClick={this.onClickColor}>变颜色</button>
+      </div>
+    );
+  }
+}
+
+
+export default Home;
+```
+
+## 函数式组件
+```
+interface IFuncProps {
+  name: string;
+}
+const FuncComp: React.FC<IFuncProps> = ({ name }) => {
+  return (
+    <div>{ name }</div>
+  )
+}
+```
+
+With hooks:
+```
+interface IFuncProps {
+  name: string;
+}
+
+const FuncComp2: React.SFC<IFuncProps> = ({ name }) => {
+  const [ num, setNum ] = React.useState<number>(0);
+  return (
+    <div>
+      { name } { num }
+      <button onClick={() => {
+        setNum(num + 1);
+      }}>+</button>
+    </div>
+  )
+}
+function useState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
+```
